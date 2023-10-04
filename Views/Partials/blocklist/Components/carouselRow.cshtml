@@ -1,0 +1,64 @@
+﻿@inherits UmbracoViewPage<BlockListItem>
+
+@{
+    var row = (CarouselRow)Model.Content;
+    var settings = (CarouselRowSettings)Model.Settings;
+    if(settings?.Hide ?? false) { return; }
+    if(row.CarouselItems == null || !row.CarouselItems.Any()) return;
+    var carouselId = "carousel-" + row.Key;
+    var itemCount = row.CarouselItems.Count;
+}
+
+<div id="@carouselId" class="carousel carousel-dark slide">
+    @{
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#@carouselId" data-bs-slide-to="0" class="active" aria-label="Slide 1"></button>
+            @for (var slideIndex = 1; slideIndex < itemCount; slideIndex++)
+            {
+                <button type="button" data-bs-target="#@carouselId" data-bs-slide-to="@slideIndex" aria-label="Slide @(slideIndex + 1)"></button>
+            }
+        </div>
+    }
+
+    <div class="carousel-inner">
+
+        @{
+            var rowFirstItem = (CarouselItem)row.CarouselItems[0].Content;
+            @if (rowFirstItem.Bild != null)
+            {
+                <div class="carousel-item active">
+                    <img src="@rowFirstItem.Bild.GetCropUrl(width: 1000, height: 600)" class="d-block w-100" alt="@rowFirstItem.Bild.Name">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h4>@rowFirstItem.Beschreibung</h4>
+                    </div>
+                </div>
+            }
+        }
+        
+        @{
+            @for (var slideIndex = 1; slideIndex < itemCount; slideIndex++)
+            {
+                var rowItem = (CarouselItem)row.CarouselItems[slideIndex].Content;
+                <div class="carousel-item">
+                    <img src="..." class="d-block w-100" alt="...">
+                    @if (rowItem.Bild != null)
+                    {
+                        <img src="@rowItem.Bild.GetCropUrl(width: 1000, height: 800)" class="d-block w-100" alt="@rowItem.Bild.Name">
+                    }
+                    <div class="carousel-caption d-none d-md-block">
+                        <h4>@rowItem.Beschreibung</h4>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#@carouselId" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#@carouselId" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+

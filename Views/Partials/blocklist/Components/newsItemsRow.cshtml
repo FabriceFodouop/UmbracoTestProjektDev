@@ -1,0 +1,34 @@
+@inherits UmbracoViewPage<BlockListItem>
+
+@{
+    var row = (NewsItemsRow)Model.Content;
+    var settings = (NewsItemsRowSettings)Model.Settings;
+    if (settings?.Hide ?? false) { return; }
+    if (row.NewsItems == null || !row.NewsItems.Any()) return;
+}
+
+<div class="row gx-4 gx-lg-5 justify-content-center">
+
+    <header class="text-center">
+        <p>@row.Titel</p>
+    </header>
+
+    @foreach (var item in row.NewsItems)
+    {
+        var rowItem = (NewsItem)item.Content;
+        var rowSettings = (NewsItemsSettings)item.Settings;
+        if (rowSettings.Hide) continue;
+
+        <div class="card col-md-4 col-sm-12">
+            @if (rowItem.Teaserbild != null)
+            {
+                <img src="@rowItem.Teaserbild.GetCropUrl(600,1000)" class="card-img-top" alt="@rowItem.Teaserbild.Name">
+            }
+            <div class="card-body">
+                <h6 class="card-title">@rowItem.Ueberschrift</h6>
+                <p class="card-text">@rowItem.Teasertext</p>
+                <p class="card-text">@rowItem.Detailtext</p>
+            </div>
+        </div>
+    }
+</div>
