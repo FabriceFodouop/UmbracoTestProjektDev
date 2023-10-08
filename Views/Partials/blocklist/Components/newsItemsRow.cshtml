@@ -19,15 +19,17 @@
         var rowSettings = (NewsItemsSettings)item.Settings;
         if (rowSettings.Hide) continue;
 
-        <div class="card col-md-4 col-sm-12">
-            @if (rowItem.Teaserbild != null)
-            {
-                <img src="@rowItem.Teaserbild.GetCropUrl(600,1000)" class="card-img-top" alt="@rowItem.Teaserbild.Name">
-            }
-            <div class="card-body">
-                <h6 class="card-title">@rowItem.Ueberschrift</h6>
-                <p class="card-text">@rowItem.Teasertext</p>
-                <p class="card-text">@rowItem.Detailtext</p>
+        <div class="col-md-4 mb-5">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h3 class="card-title">@rowItem.Ueberschrift</h3>
+                    @if (rowItem.Teaserbild != null)
+                    {
+                        <img class="img-fluid mb-3" src="@rowItem.Teaserbild.GetCropUrl(300,400)" alt="@rowItem.Teaserbild.Name">
+                    }
+                    <p class="card-text">@rowItem.Teasertext</p>
+                    <p class="card-text"><a class="btn btn-sm" href="#!">Weitere Infos</a></p>
+                </div>
             </div>
         </div>
     }
