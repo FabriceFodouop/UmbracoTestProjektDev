@@ -5,8 +5,13 @@
 	Layout = "Master.cshtml";
 }
 
+<script src="https://unpkg.com/vue@next"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
 <!-- Main Content-->
 <main class="mb-4">
+
+    <!-- Slider-View-->
     <div class="container px-4 px-lg-5">
         <div class="testimonials text-center bg-light">
             <div class="row gx-4 gx-lg-5 justify-content-center">
@@ -17,9 +22,39 @@
         </div>
     </div>
 
-    <div class="container px-4 px-lg-5">
-        <div class="testimonials text-center bg-primary">
-            @Html.GetBlockListHtml(Model.MyNewsTeaser)
+    <!-- News-Teaser-View-->
+    <div id="app">
+        <div class="container px-4 px-lg-5">
+            <div class="testimonials text-center bg-primary">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-4 mb-5" v-for="news in newsItems">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h3 class="card-title">{{news.ueberschrift}}</h3>
+                                <img class="img-fluid mb-3" :src="news.teaserbildUrl">
+                                <p class="card-text">{{news.teasertext}}</p>
+                                <p class="card-text"><a class="btn btn-sm" href="#!">Weitere Infos</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    newsItems: []
+                }
+            },
+            created() {
+                axios.get('api/newsteaser').then(function (reponse) {
+                    vm.newsItems = reponse.data;
+                })
+            }
+        });
+        let vm = app.mount('#app');
+    </script>
+
 </main>
