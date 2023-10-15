@@ -1,10 +1,7 @@
-﻿using NPoco;
-using Umbraco.Cms.Core.Mapping;
+﻿using Umbraco.Cms.Core.Mapping;
 using Umbraco.Cms.Core.Models.Blocks;
 using Umbraco.Cms.Web.Common.PublishedModels;
 using UmbracoTestProject.Models;
-using static Lucene.Net.Util.Packed.PackedInt32s;
-using static Umbraco.Cms.Core.Constants.HttpContext;
 
 namespace UmbracoTestProject.Mapping
 {

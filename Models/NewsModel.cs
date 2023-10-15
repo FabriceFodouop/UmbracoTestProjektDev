@@ -1,7 +1,4 @@
-﻿using Umbraco.Cms.Core.Models;
-using Umbraco.Cms.Core.Models.PublishedContent;
-
-namespace UmbracoTestProject.Models
+﻿namespace UmbracoTestProject.Models
 {
     public class NewsModel
     {

@@ -1,18 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
-using System;
-using Umbraco.Cms.Core.Models;
-using Umbraco.Cms.Core.PublishedCache;
-using Umbraco.Cms.Core.Services;
 using Umbraco.Cms.Core.Web;
-using Umbraco.Cms.Web.Common;
 using Umbraco.Cms.Web.Common.Controllers;
 using UmbracoTestProject.Models;
-using Umbraco.Cms.Core.Models.PublishedContent;
 using Umbraco.Cms.Web.Common.PublishedModels;
 using Umbraco.Cms.Core.Models.Blocks;
 using Umbraco.Cms.Core.Mapping;
-using NPoco;
 using UmbracoTestProject.Mapping;
 
 namespace UmbracoTestProject.Controllers

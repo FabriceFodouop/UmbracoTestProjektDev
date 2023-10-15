@@ -1,5 +1,4 @@
-﻿using NPoco.FluentMappings;
-using Umbraco.Cms.Core.Mapping;
+﻿using Umbraco.Cms.Core.Mapping;
 using Umbraco.Cms.Web.Common.PublishedModels;
 using UmbracoTestProject.Models;
 
