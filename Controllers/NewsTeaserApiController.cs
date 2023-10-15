@@ -21,7 +21,7 @@ namespace UmbracoTestProject.Controllers
         }
 
         [HttpGet("api/newsteaser")]
-        public JsonResult MyAction()
+        public JsonResult GetNewsTeaserData()
         {
             if (contentService.TryGetUmbracoContext(out IUmbracoContext? context) == false)
             {
