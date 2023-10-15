@@ -5,9 +5,6 @@
 	Layout = "Master.cshtml";
 }
 
-<script src="https://unpkg.com/vue@next"></script>
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-
 <!-- Main Content-->
 <main class="mb-4">
 
@@ -23,6 +20,8 @@
     </div>
 
     <!-- News-Teaser-View-->
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <div id="app">
         <div class="container px-4 px-lg-5">
             <div class="testimonials text-center bg-primary">
@@ -33,7 +32,7 @@
                                 <h3 class="card-title">{{news.ueberschrift}}</h3>
                                 <img class="img-fluid mb-3" :src="news.teaserbildUrl">
                                 <p class="card-text">{{news.teasertext}}</p>
-                                <p class="card-text"><a class="btn btn-sm" href="#!">Weitere Infos</a></p>
+                                <p class="card-text"><a class="nav-item" href="#!">Weitere Infos</a></p>
                             </div>
                         </div>
                     </div>
@@ -49,8 +48,8 @@
                 }
             },
             created() {
-                axios.get('api/newsteaser').then(function (reponse) {
-                    vm.newsItems = reponse.data;
+                axios.get('api/newsteaser').then((response) => {
+                    vm.newsItems = response.data;
                 })
             }
         });
